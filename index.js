@@ -5,7 +5,7 @@
  ** fixed version 1.0.6 for iOS
  **/
 
-import React, { Component } from 'react';
+import * as React from 'react';
 import {
   StyleSheet,
   View,
@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
   },
 });
 
-class PercentageCircle extends Component {
+class PercentageCircle extends React.Component {
   propTypes: {
     color: React.PropTypes.string,
     bgcolor: React.PropTypes.string,
@@ -61,6 +61,7 @@ class PercentageCircle extends Component {
     borderWidth: React.Proptypes.number,
     textStyle: React.Proptypes.array,
     disabled: React.PropTypes.bool,
+    showText: React.PropTypes.bool,
   }
 
 
@@ -161,7 +162,7 @@ class PercentageCircle extends Component {
               backgroundColor: this.props.innerColor,
             }]}>
           {this.props.children ? this.props.children :
-            <Text style={[styles.text, this.state.textStyle]}>{this.props.percent}%</Text>}
+            this.props.showText && <Text style={[styles.text, this.state.textStyle]}>{this.props.percent}%</Text>}
         </View>
 
       </View>
